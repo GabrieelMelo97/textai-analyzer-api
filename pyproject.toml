@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "text-analysis-api"
+version = "1.0.0"
+description = "API para análise de texto usando LangGraph e FastAPI"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.9.7 || >3.9.7,<3.12"
+fastapi = "0.109.2"
+uvicorn = "0.27.1"
+python-dotenv = "1.0.1"
+langchain = "0.1.9"
+langchain-openai = "0.0.8"
+langgraph = "0.0.20"
+pydantic = "2.6.1"
+python-multipart = "0.0.9"
+pydantic-settings = "^2.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+black = "^24.1.1"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"
+pytest-mock = "^3.12.0"
+pytest-cov = "^4.1.0"
+httpx = "^0.27.0"
+pytest-asyncio = "^0.23.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=app --cov-report=term-missing"
+asyncio_mode = "auto" 
